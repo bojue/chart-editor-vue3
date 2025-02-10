@@ -22,19 +22,22 @@ export const ChartClassifyList = [{
 }, {
   label: '散点图',
   type: CompClassifyType.PieChart,
-}, {
-  label: '关系图',
-  type: CompClassifyType.RadarChart,
-}, {
-  label: '桑基图',
-  type: CompClassifyType.RadarChart,
-}, {
-  label: '树图',
-  type: CompClassifyType.RadarChart,
-}, {
-  label: '矩阵树图',
-  type: CompClassifyType.RadarChart,
-}, {
-  label: '更多',
-  type: 'chartMore'
-}]
+},
+  // {
+  //   label: '关系图',
+  //   type: CompClassifyType.RadarChart,
+  // }, {
+  //   label: '桑基图',
+  //   type: CompClassifyType.RadarChart,
+  // },
+  // {
+  //   label: '树图',
+  //   type: CompClassifyType.RadarChart,
+  // }, {
+  //   label: '矩阵树图',
+  //   type: CompClassifyType.RadarChart,
+  // }, {
+  //   label: '更多',
+  //   type: 'chartMore'
+  // }
+]
