@@ -1,0 +1,78 @@
+<template>
+  <div class="editor bg-default">
+    <Header class="h-60"></Header>
+    <div class="editor-content h-flex-1">
+      <SideBar class="w-65"></SideBar>
+      <CompList class="w-460"></CompList>
+      <EditorCanvas class="w-flex-1" :options="chartDataOptions"></EditorCanvas>
+      <Setting class="w-300" :options="chartDataOptions"></Setting>
+    </div>
+  </div>
+
+</template>
+<script lang="ts" setup>
+import { ref, onMounted } from 'vue';
+import Header from './components/Header.vue';
+import SideBar from './components/Sidebar.vue';
+import CompList from './components/CompList.vue';
+import EditorCanvas from './components/EditorCanvas.vue';
+import Setting from './components/Setting.vue';
+
+import CompOptionData from '@/views/editor/configs/echarts-comp/index'
+
+
+const chartDataOptions = ref(CompOptionData.BarOption)
+
+
+</script>
+
+<style lang="scss" scoped>
+.editor {
+  display: grid;
+  grid-template-rows: 57px 1fr;
+  height: 100vh;
+
+  .h-56 {
+    height: 56px;
+  }
+
+  .h-flex-1 {
+    flex: 1;
+  }
+}
+
+.editor-content {
+  display: grid;
+  grid-template-columns: 65px 460px auto 300px;
+  height: 100%;
+  // display: flex;
+
+  // ::v-deep {
+  //   .w-65 {
+  //     idth: 65px;
+  //   }
+
+  //   .w-460 {
+  //     width: 460px;
+  //   }
+
+  //   .w-flex-1 {
+  //     flex: 1;
+  //   }
+
+  //   .w-300 {
+  //     width: 300px;
+  //   }
+  // }
+}
+
+@media screen and (max-width: 1600px) {
+  .editor-content {
+    grid-template-columns: 65px 360px auto 300px !important;
+  }
+}
+
+.text {
+  color: #fff;
+}
+</style>
