@@ -31,8 +31,8 @@
           'towColumns': towColumnsActive,
           'oneColumns': !towColumnsActive
         }">
-          <div class="item-comp-item" v-for="subItem in CompList">
-            <div class="iconContent">
+          <div class="item-comp-item" v-for="subItem in compList" :class="{ active: subItem.active }">
+            <div class="iconContent" @click="selectComp(subItem)">
               <div class="chrome">
                 <span class="close"></span><span class="min"></span><span class="resize"></span>
               </div>
@@ -48,7 +48,7 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, defineEmits } from 'vue';
 import { CompLibClassify } from '../configs/CompLib';
 import { CompList } from '../configs/Comp';
 
@@ -56,10 +56,13 @@ import ColumnsActiveImg from '@/assets/editor/colus-active.svg'
 import ColumnsImg from '@/assets/editor/colus.svg'
 import { useLocalStorageStore } from '@/stores/localStorage';
 
+const emits = defineEmits(['selectType'])
+
 const loadLocalStorageStore = useLocalStorageStore()
 const CompLibClassifyList = ref(CompLibClassify) // 组件子分类
 const SubClassify = ref('') // 组件子分类
 const eChartsCompList = ref([]) // 组件列表
+const compList = ref([...CompList]) // 组件列表
 const currentCompLibClassify = ref(CompLibClassifyList.value[0])
 const towColumnsActive = ref(loadLocalStorageStore.editorSettingConfig)
 
@@ -77,9 +80,27 @@ const changeActiveState = () => {
   loadLocalStorageStore.compTowColumnsActive(val)
 }
 
+const initActiveState = (currItem: any) => {
+  if (Array.isArray(compList.value)) {
+    compList.value.forEach((item: any) => {
+      if (currItem.type == item.type) {
+        item.active = true
+      } else {
+        item.active = false
+      }
+
+    })
+  }
+}
+
+const selectComp = (item: any) => {
+  initActiveState(item)
+  emits('selectType', item.type)
+}
+
 
 onMounted(() => {
-  eChartsCompList.value = CompList
+  eChartsCompList.value = [...CompList]
 })
 
 
@@ -105,7 +126,7 @@ onMounted(() => {
 
 
     .item {
-      height: 60px;
+      height: 50px;
       cursor: pointer;
     }
 
@@ -173,6 +194,18 @@ onMounted(() => {
     color: darkgrey;
     display: grid;
     grid-template-columns: 1fr 20px;
+
+    &.active {
+      .iconContent {
+        border: 1px solid green;
+      }
+
+      .title {
+        box-shadow: 3px 3px mediumspringgreen;
+        color: aliceblue;
+        background: dimgray;
+      }
+    }
 
     .title {
       font-size: 12px;

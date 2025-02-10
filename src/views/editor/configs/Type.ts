@@ -17,10 +17,18 @@ export enum CompClassifyType {
 
 export enum CompType {
   Bar = 'bar',
+  BarSimple = 'barSimple',
+  BarYCategory = 'barYCategory',
+  BarNegative = 'barNegative', // 柱状图-负数
   Line = 'line',
   Ranking = 'line',
   Pie = 'pie',
+  PieDoughnut = 'pieDoughnut',
+  PiePadAngle = 'piePadAngle',
+  PieHalfDonut = 'pieHalfDonut', // 半圆
+  PieRose = 'pieRose', // 玫瑰图,
   Scatter = 'scatter',
+  ScatterSimple = 'scatterSimple', // 散点图-简单
   Map = 'map',
   Radar = 'radar',
   Funnel = 'funnel',

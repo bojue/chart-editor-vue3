@@ -3,7 +3,7 @@
     <Header class="h-60"></Header>
     <div class="editor-content h-flex-1">
       <SideBar class="w-65"></SideBar>
-      <CompList class="w-460"></CompList>
+      <CompList class="w-460" @selectType="selectOptionType"></CompList>
       <EditorCanvas class="w-flex-1" :options="chartDataOptions"></EditorCanvas>
       <Setting class="w-300" :options="chartDataOptions"></Setting>
     </div>
@@ -19,9 +19,44 @@ import EditorCanvas from './components/EditorCanvas.vue';
 import Setting from './components/Setting.vue';
 
 import CompOptionData from '@/views/editor/configs/echarts-comp/index'
+import { graphic } from './../editor/configs/echarts-comp/common/index'
+import { CompType } from './configs/Type';
 
 
-const chartDataOptions = ref(CompOptionData.BarOption)
+const chartDataOptions: any = ref(CompOptionData.BarOption)
+
+onMounted(() => {
+  console.log('chartDataOptions', chartDataOptions.value)
+})
+
+const selectOptionType = (type: CompType) => {
+  const data = {
+    [CompType.BarSimple]: CompOptionData.BarSimpleOption,
+    [CompType.Bar]: CompOptionData.BarOption,
+    [CompType.BarNegative]: CompOptionData.BarNegativeOption,
+    [CompType.BarYCategory]: CompOptionData.BarYCategoryOption,
+    [CompType.Line]: CompOptionData.LineOption,
+    [CompType.Pie]: CompOptionData.PieOption,
+    [CompType.PieDoughnut]: CompOptionData.PieDoughnutOption,
+    [CompType.PiePadAngle]: CompOptionData.PiePadAngleOption,
+    [CompType.PieHalfDonut]: CompOptionData.PieHalfDonutOption,
+    [CompType.PieRose]: CompOptionData.PieRoseTypeSimpleOption,
+    [CompType.AreaStack]: CompOptionData.AreaStackOption,
+    [CompType.AreaStackGradient]: CompOptionData.AreaStackGradientOption,
+    [CompType.Scatter]: CompOptionData.ScatterOption,
+    [CompType.ScatterSimple]: CompOptionData.ScatterSimpleOption,
+    [CompType.Radar]: CompOptionData.RadarOption,
+    [CompType.Funnel]: CompOptionData.FunctionOption,
+    [CompType.Sankey]: CompOptionData.SankeyOption,
+    [CompType.Gauge]: CompOptionData.GaugeOption,
+    [CompType.GaugeMulti]: CompOptionData.GaugeMultiTitleOption,
+    [CompType.GaugeRing]: CompOptionData.GaugeRingOption,
+  }
+
+  const optionData = data[type]
+  optionData['_graphic'] = graphic
+  chartDataOptions.value = { ...optionData }
+}
 
 
 </script>
