@@ -31,8 +31,8 @@
           'towColumns': towColumnsActive,
           'oneColumns': !towColumnsActive
         }">
-          <div class="item-comp-item" v-for="subItem in compList" :class="{ active: subItem.active }">
-            <div class="iconContent" @click="selectComp(subItem)">
+          <div class="item-comp-item" v-for="(subItem, index) in compList" :class="{ active: subItem.active }">
+            <div class="iconContent" @click="selectComp(subItem)" :key="index">
               <div class="chrome">
                 <span class="close"></span><span class="min"></span><span class="resize"></span>
               </div>

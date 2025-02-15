@@ -19,18 +19,20 @@ import EditorCanvas from './components/EditorCanvas.vue';
 import Setting from './components/Setting.vue';
 
 import CompOptionData from '@/views/editor/configs/echarts-comp/index'
-import { graphic } from './../editor/configs/echarts-comp/common/index'
+import {
+  graphic,
+  title
+} from './../editor/configs/echarts-comp/common/index'
 import { CompType } from './configs/Type';
 
-
-const chartDataOptions: any = ref(CompOptionData.BarOption)
+const chartDataOptions: any = ref()
 
 onMounted(() => {
-  console.log('chartDataOptions', chartDataOptions.value)
+  chartDataOptions.value = selectOptionType(CompType.Bar)
 })
 
 const selectOptionType = (type: CompType) => {
-  const data = {
+  const data: any = {
     [CompType.BarSimple]: CompOptionData.BarSimpleOption,
     [CompType.Bar]: CompOptionData.BarOption,
     [CompType.BarNegative]: CompOptionData.BarNegativeOption,
@@ -53,9 +55,15 @@ const selectOptionType = (type: CompType) => {
     [CompType.GaugeRing]: CompOptionData.GaugeRingOption,
   }
 
-  const optionData = data[type]
-  optionData['_graphic'] = graphic
+  const optionData = appendOptionData(data[type])
+
   chartDataOptions.value = { ...optionData }
+}
+
+const appendOptionData = (data: any) => {
+  data['_graphic'] = { ...graphic }
+  data['_title'] = { ...title }
+  return data
 }
 
 

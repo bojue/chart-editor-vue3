@@ -6,7 +6,9 @@
         <span class="name">{{ item.label }}</span>
       </div>
     </div>
-    <div class="setting-contents">
+    <div class="setting-contents" v-if="options">
+      <DataComponent :options="options" v-if="selectBtn.type === 'foundation'" />
+      <Watermark :graphic="options._graphic" v-if="selectBtn.type === 'data'" />
       <Watermark :graphic="options._graphic" v-if="selectBtn.type === 'watermark'" />
     </div>
   </div>
@@ -14,6 +16,7 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
 import { Radio } from 'ant-design-vue';
+import DataComponent from './comp-setting/foundation/Index.vue'
 import Watermark from './comp-setting/watermark/Index.vue'
 interface Props {
   options: any
