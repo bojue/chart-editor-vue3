@@ -15,6 +15,7 @@ import {
   Checkbox,
   Slider,
   Switch,
+  Modal
 } from 'ant-design-vue';
 
 const app = createApp(App)
@@ -27,6 +28,7 @@ app.use(Radio)
 app.use(Checkbox)
 app.use(Slider)
 app.use(Switch)
+app.use(Modal)
 
 app.use(createPinia())
 app.use(router)

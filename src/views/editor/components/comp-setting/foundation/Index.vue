@@ -12,6 +12,7 @@ interface Props {
 const props = defineProps<Props>();
 
 
+
 const rationList = ref([
   {
     label: '不旋转',

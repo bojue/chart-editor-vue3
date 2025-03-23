@@ -167,8 +167,6 @@ const initChart = () => {
     const isGraphicBool = props?.options?._graphic?.show;
     props.options.graphic = isGraphicBool && props.options._graphic;
 
-    console.log('options', props?.options)
-
     chartInstance.setOption(props.options, true);
   }
 
