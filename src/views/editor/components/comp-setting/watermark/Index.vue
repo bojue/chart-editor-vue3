@@ -1,9 +1,7 @@
 <template>
   <div class="setting-content-item">
-    <div class="classify-title">
-      文本水印
-    </div>
-    <div class="setting-body">
+    <ShowTitle :state="state"></ShowTitle>
+    <div class="setting-body" v-if="state.showState">
       <E2Switch :title="'开启'" :data-object="graphic" :params="'show'" />
       <E2Input v-if="graphic" :title="'文本'" :data-object="graphic.style" :params="'text'"></E2Input>
       <E2Number v-if="graphic" :title="'大小'" :data-object="graphic.style" :params="'fontSize'" :addon-after="'px'"
@@ -19,6 +17,7 @@
 </template>
 <script lang="ts" setup>
 import { ref } from 'vue';
+import ShowTitle from '@/views/editor/components/comp-basic/ShowTitle.vue'
 import E2Switch from '@/views/editor/components/comp-basic/Switch.vue'
 import E2Input from '@/views/editor/components/comp-basic/Input.vue'
 import E2Number from '@/views/editor/components/comp-basic/Number.vue'
@@ -33,6 +32,10 @@ interface Props {
 }
 
 const props = defineProps<Props>();
+const state = ref({
+  title: '文本水印',
+  showState: true,
+})
 
 
 const rationList = ref([

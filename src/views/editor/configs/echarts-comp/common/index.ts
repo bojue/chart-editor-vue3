@@ -1,4 +1,4 @@
-export { graphic } from './graphic'
-export { title } from './title'
+export { graphic } from './src/graphic'
+export { title } from './src/title'
 
 

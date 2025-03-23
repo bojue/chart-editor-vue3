@@ -1,14 +1,7 @@
 <template>
   <div class="setting-content-item">
-    <div class="classify-title control" @click="state.titleShow = !state.titleShow">
-      标题
-      <span class="icon">
-        <span class="label">{{ !state.titleShow ? '展开' : '收起' }}</span>
-        <UpOutlined v-if="state.titleShow" />
-        <DownOutlined v-else />
-      </span>
-    </div>
-    <div class="setting-body" v-show="state.titleShow">
+    <ShowTitle :state="state"></ShowTitle>
+    <div class="setting-body" v-show="state.showState">
       <E2Switch v-if="title" :title="'开启'" :data-object="title" :params="'show'" />
       <E2Input v-if="title" :title="'文本'" :data-object="title" :params="'text'"></E2Input>
       <E2Number v-if="title" :title="'大小'" :data-object="title.textStyle" :params="'fontSize'" :addon-after="'px'"
@@ -22,7 +15,7 @@
 </template>
 <script lang="ts" setup>
 import { ref, h } from 'vue';
-import { DownOutlined, UpOutlined } from '@ant-design/icons-vue';
+import ShowTitle from '@/views/editor/components/comp-basic/ShowTitle.vue'
 import E2Switch from '@/views/editor/components/comp-basic/Switch.vue'
 import E2Input from '@/views/editor/components/comp-basic/Input.vue'
 import E2Number from '@/views/editor/components/comp-basic/Number.vue'
@@ -37,7 +30,8 @@ interface Props {
 }
 
 const state = ref({
-  titleShow: false
+  title: '标题',
+  showState: true
 })
 
 const props = defineProps<Props>();
@@ -60,31 +54,6 @@ const marks = ref({
 .setting-content {
   height: 57px;
   line-height: 56px;
-}
-
-.icon {
-  position: absolute;
-  right: 30px;
-  font-size: 16px;
-  cursor: pointer;
-  user-select: none;
-
-  .label {
-    font-size: 12px;
-    padding: 0 10px;
-    color: rgba(255, 255, 255, 0.5);
-  }
-}
-
-
-.classify-title {
-  font-size: 13px;
-  color: rgba(255, 255, 255, 0.9);
-  line-height: 28px;
-  height: 28px;
-  border-left: 4px solid #1890ff;
-  padding-left: 10px;
-  margin: 15px 0;
 }
 
 .setting-item {

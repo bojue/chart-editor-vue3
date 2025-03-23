@@ -4,7 +4,7 @@ export const title = {
   show: true,
   text: '标题',
   textStyle: {
-    fontSize: 40,
+    fontSize: 26,
     opacity: 1,
     color: '#000',
   }
