@@ -14,7 +14,7 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
 import { Radio } from 'ant-design-vue';
 import FoundationComponent from './comp-setting/foundation/Index.vue'
 import DataComponent from './comp-setting/data/Index.vue'
@@ -24,6 +24,10 @@ interface Props {
 }
 
 const props = defineProps<Props>();
+
+onMounted(() => {
+  console.log('options', props.options)
+})
 
 const size = 'small'
 const list = ref([{

@@ -1,6 +1,7 @@
 <template>
   <div class="setting-item">
-    <a-modal :title="title" :width="800" :bodyStyle="bodyStyle" :open="open" @cancel="cancel" @ok="handleOk">
+    <a-modal :title="title" :width="800" :bodyStyle="bodyStyle" :open="open" :cancelText="'取消'" :okText="'确定'"
+      @cancel="cancel" @ok="handleOk">
       <div :id="codeEditorId"></div>
     </a-modal>
   </div>
@@ -24,6 +25,7 @@ const bodyStyle = {
   minHeight: '500px',
   maxHeight: '700px'
 }
+
 const initCode = () => {
   const hasDOM = document.getElementById(codeEditorId.value)
   if (hasDOM) {

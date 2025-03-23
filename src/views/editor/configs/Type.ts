@@ -1,5 +1,7 @@
 export enum ClassifyType {
   BasicChart = 'basicChart',
+  Combination = 'combination',
+  Complex = 'complex',
   Other = 'other',
 }
 
@@ -9,9 +11,11 @@ export enum CompClassifyType {
   BarChart = 'barChart',
   LineChart = 'lineChart',
   PieChart = 'pieChart',
+  ScatterPlotChart = 'scatterPlot',
   ScatterChart = 'scatterChart',
   MapChart = 'mapChart',
   RadarChart = 'radarChart',
+  DashBoard = 'dashBoard',
   ChartMore = 'chartMore',
 }
 

@@ -3,7 +3,9 @@
     <div class="nav">
       <!-- 组件分类 -->
       <div class="comp-classify">
-        <div class="item" v-for="item in CompLibClassifyList" @click="selectCompLibClassify(item)">
+        <div class="item" v-for="item in CompLibClassifyList" @click="selectCompLibClassify(item)" :class="{
+          active: currentCompLibClassify.type === item.type
+        }">
           <div class="icon">
             <component :is="item.icon" class="icon" />
           </div>
@@ -15,7 +17,7 @@
       <!-- 组件子分类 -->
       <div class="sub-nav">
         <div class="item-sub" v-for="subItem in currentCompLibClassify.children"
-          :class="{ active: subItem.label === SubClassify?.label }" @click="selectSubClassify(subItem)">
+          :class="{ active: subItem.type === SubClassify?.type }" @click="selectSubClassify(subItem)">
           <div class="title">
             {{ subItem.label }}
           </div>
@@ -28,10 +30,10 @@
             :src="towColumnsActive ? ColumnsActiveImg : ColumnsImg" alt="">
         </div>
         <div class="content" :class="{
-          'towColumns': towColumnsActive,
-          'oneColumns': !towColumnsActive
+          'towColumns': towColumnsActive && !selectCompList.length,
+          'oneColumns': !towColumnsActive || !selectCompList.length
         }">
-          <div class="item-comp-item" v-for="(subItem, index) in compList" :class="{ active: subItem.active }">
+          <div class="item-comp-item" v-for="(subItem, index) in selectCompList" :class="{ active: subItem.active }">
             <div class="iconContent" @click="selectComp(subItem)" :key="index">
               <div class="chrome">
                 <span class="close"></span><span class="min"></span><span class="resize"></span>
@@ -42,13 +44,16 @@
               {{ subItem.label }}
             </div>
           </div>
+          <span class="no-data" v-if="!selectCompList.length">
+            没有数据
+          </span>
         </div>
       </div>
     </div>
   </div>
 </template>
 <script lang="ts" setup>
-import { ref, onMounted, defineEmits } from 'vue';
+import { ref, onMounted, defineEmits, watch } from 'vue';
 import { CompLibClassify } from '../configs/CompLib';
 import { CompList } from '../configs/Comp';
 
@@ -63,15 +68,23 @@ const CompLibClassifyList = ref(CompLibClassify) // 组件子分类
 const SubClassify = ref('') // 组件子分类
 const eChartsCompList = ref([]) // 组件列表
 const compList = ref([...CompList]) // 组件列表
+const selectCompList = ref([...CompList])
 const currentCompLibClassify = ref(CompLibClassifyList.value[0])
 const towColumnsActive = ref(loadLocalStorageStore.editorSettingConfig)
 
 const selectCompLibClassify = (item: any) => {
   currentCompLibClassify.value = item
+  const childrenType = item?.children?.[0]
+  if (childrenType) {
+    SubClassify.value = childrenType
+  } else {
+    SubClassify.value = null
+  }
 }
 
 const selectSubClassify = (subItem: any) => {
   SubClassify.value = subItem
+  console.log('SubClassify', SubClassify.value)
 }
 
 const changeActiveState = () => {
@@ -98,9 +111,29 @@ const selectComp = (item: any) => {
   emits('selectType', item.type)
 }
 
+const initData = () => {
+  const data = CompLibClassifyList?.value[0]
+  const subItem = data?.children?.[0]
+  console.log('SubClassify', SubClassify.value)
+  if (subItem) {
+    SubClassify.value = subItem
+  }
+}
+
+const selCompList = () => {
+  const filterList = compList.value.filter(item => {
+    return item.classify.includes(SubClassify.value?.type)
+  })
+  selectCompList.value = [...filterList]
+}
+
+watch(SubClassify, value => {
+  selCompList()
+})
 
 onMounted(() => {
   eChartsCompList.value = [...CompList]
+  initData()
 })
 
 
@@ -117,12 +150,7 @@ onMounted(() => {
     grid-template-columns: 45px 60px 1fr;
     height: 100%;
 
-    .comp-classify {
-      height: calc(100% - 0px);
-      width: 45px;
-      padding-top: 15px;
-      background: RGB(35, 35, 36);
-    }
+
 
 
     .item {
@@ -144,6 +172,21 @@ onMounted(() => {
 
       &.active {
         background: rgba(24, 144, 255, 0.15);
+        color: #1890ff;
+      }
+    }
+  }
+
+  .comp-classify {
+    height: calc(100% - 0px);
+    width: 45px;
+    padding-top: 15px;
+    background: RGB(35, 35, 36);
+
+    .item.active {
+      color: #1890ff;
+
+      .title {
         color: #1890ff;
       }
     }

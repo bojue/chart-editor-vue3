@@ -15,12 +15,12 @@ export const CompLibClassify = [{
 }, {
   label: '组合',
   icon: FundOutlined,
-  type: ClassifyType.BasicChart,
-  children: [...ChartClassifyList]
+  type: ClassifyType.Combination,
+  children: []
 }, {
   label: '复杂',
   icon: SlackOutlined,
-  type: ClassifyType.BasicChart,
-  children: [...ChartClassifyList]
+  type: ClassifyType.Complex,
+  children: []
 }]
 

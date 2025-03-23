@@ -109,12 +109,12 @@ export const ChartCompList = [{
   label: '散点图·简单',
   type: CompType.ScatterSimple,
   icon: ChartDemoImgList.ScatterSimpleImg,
-  classify: [CompClassifyType.AllChart, CompClassifyType.BarChart]
+  classify: [CompClassifyType.AllChart, CompClassifyType.ScatterPlotChart]
 }, {
   label: '散点图',
   type: CompType.Scatter,
   icon: ChartDemoImgList.ScatterImg,
-  classify: [CompClassifyType.AllChart, CompClassifyType.BarChart]
+  classify: [CompClassifyType.AllChart, CompClassifyType.ScatterPlotChart]
 },
 {
   label: '漏斗图',
@@ -125,7 +125,7 @@ export const ChartCompList = [{
   label: '雷达图',
   type: CompType.Radar,
   icon: ChartDemoImgList.RadarImg,
-  classify: [CompClassifyType.AllChart, CompClassifyType.BarChart]
+  classify: [CompClassifyType.AllChart, CompClassifyType.RadarChart]
 },
 // {
 //   label: '关系图',
@@ -148,22 +148,22 @@ export const ChartCompList = [{
   label: '仪表盘',
   type: CompType.Gauge,
   icon: ChartDemoImgList.GaugeImg,
-  classify: [CompClassifyType.AllChart, CompClassifyType.BarChart]
+  classify: [CompClassifyType.AllChart, CompClassifyType.DashBoard]
 }, {
   label: '仪表盘·多等级',
   type: CompType.GaugeMulti,
   icon: ChartDemoImgList.GaugeMultiImg,
-  classify: [CompClassifyType.AllChart, CompClassifyType.BarChart]
+  classify: [CompClassifyType.AllChart, CompClassifyType.DashBoard]
 }, {
   label: '仪表盘·环',
   type: CompType.GaugeRing,
   icon: ChartDemoImgList.GaugeRingImg,
-  classify: [CompClassifyType.AllChart, CompClassifyType.BarChart]
+  classify: [CompClassifyType.AllChart, CompClassifyType.DashBoard]
 }, {
   label: '桑基图',
   type: CompType.Sankey,
   icon: ChartDemoImgList.SankeyImg,
-  classify: [CompClassifyType.AllChart, CompClassifyType.BarChart]
+  classify: [CompClassifyType.AllChart, CompClassifyType.ChartMore]
 },
   // {
   //   label: '树图',
