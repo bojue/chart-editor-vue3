@@ -3,6 +3,7 @@
     <div class="classify-title control" @click="state.titleShow = !state.titleShow">
       标题
       <span class="icon">
+        <span class="label">{{ !state.titleShow ? '展开' : '收起' }}</span>
         <UpOutlined v-if="state.titleShow" />
         <DownOutlined v-else />
       </span>
@@ -61,12 +62,18 @@ const marks = ref({
   line-height: 56px;
 }
 
-
 .icon {
   position: absolute;
   right: 30px;
   font-size: 16px;
   cursor: pointer;
+  user-select: none;
+
+  .label {
+    font-size: 12px;
+    padding: 0 10px;
+    color: rgba(255, 255, 255, 0.5);
+  }
 }
 
 
