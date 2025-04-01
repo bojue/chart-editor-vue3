@@ -53,6 +53,12 @@ const selectOptionType = (type: CompType) => {
     [CompType.Gauge]: CompOptionData.GaugeOption,
     [CompType.GaugeMulti]: CompOptionData.GaugeMultiTitleOption,
     [CompType.GaugeRing]: CompOptionData.GaugeRingOption,
+    [CompType.BarLine]: CompOptionData.BarLineOption,
+    [CompType.Tree]: CompOptionData.TreeOption,
+    [CompType.TreeRadial]: CompOptionData.TreeRadialOption,
+    [CompType.DatasetSeriesLayoutBy]: CompOptionData.DatasetSeriesLayoutBy,
+    [CompType.ThemeRiver]: CompOptionData.ThemeRiverBasicOption,
+    [CompType.TreeMapBasic]: CompOptionData.TreeMapBasicOption,
   }
 
   const optionData = appendOptionData(data[type])
@@ -63,6 +69,7 @@ const selectOptionType = (type: CompType) => {
 const appendOptionData = (data: any) => {
   data['_graphic'] = { ...graphic }
   data['_title'] = { ...title }
+  console.log('title', title, data)
   return data
 }
 

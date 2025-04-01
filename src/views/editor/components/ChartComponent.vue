@@ -184,7 +184,7 @@ onMounted(initChart);
 
 <style lang="scss" scoped>
 .chart {
-  width: 800px;
-  height: 400px;
+  width: 1000px;
+  height: 600px;
 }
 </style>

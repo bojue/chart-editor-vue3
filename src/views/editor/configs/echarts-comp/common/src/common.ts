@@ -1,3 +1,3 @@
 export const defaultConfig = {
-  GraphicText: 'Echarts Editor',
+  GraphicText: 'GitHub Bojue',
 }

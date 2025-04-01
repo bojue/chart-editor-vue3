@@ -1,7 +1,8 @@
 import { AppstoreAddOutlined } from "@ant-design/icons-vue";
 import { CompClassifyType } from "./Type";
 
-export const ChartClassifyList = [{
+// 基础
+export const BasicChartList = [{
   label: '全部',
   type: CompClassifyType.AllChart,
 }, {
@@ -20,25 +21,37 @@ export const ChartClassifyList = [{
   label: '雷达图',
   type: CompClassifyType.RadarChart,
 }, {
+  label: '树',
+  type: CompClassifyType.TreeChart,
+}, {
+  label: '河流图',
+  type: CompClassifyType.ThemeRiverChart,
+}, {
   label: '散点图',
   type: CompClassifyType.ScatterPlotChart,
 },
-// {
-//   label: '关系图',
-//   type: CompClassifyType.RadarChart,
-// }, {
-//   label: '桑基图',
-//   type: CompClassifyType.RadarChart,
-// },
-// {
-//   label: '树图',
-//   type: CompClassifyType.RadarChart,
-// }, {
-//   label: '矩阵树图',
-//   type: CompClassifyType.RadarChart,
-// }, 
 {
   label: '更多',
-  type: 'chartMore'
+  type: CompClassifyType.ChartMore
 }
 ]
+
+// 组合
+export const MixedChartList = [{
+  label: '全部',
+  type: CompClassifyType.MixedAllChart,
+}, {
+  label: '折柱',
+  type: CompClassifyType.MixedBarLineChart,
+},
+{
+  label: '更多',
+  type: CompClassifyType.MixedMoreChart
+}
+]
+
+// 复杂
+export const ComplexChartList = [{
+  label: '全部',
+  type: CompClassifyType.ComplexAllChart,
+},]

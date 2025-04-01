@@ -54,7 +54,7 @@
 </template>
 <script lang="ts" setup>
 import { ref, onMounted, defineEmits, watch } from 'vue';
-import { CompLibClassify } from '../configs/CompLib';
+import { CompLibClassify } from '../configs/CompClassify';
 import { CompList } from '../configs/Comp';
 
 import ColumnsActiveImg from '@/assets/editor/colus-active.svg'
@@ -70,7 +70,7 @@ const eChartsCompList = ref([]) // 组件列表
 const compList = ref([...CompList]) // 组件列表
 const selectCompList = ref([...CompList])
 const currentCompLibClassify = ref(CompLibClassifyList.value[0])
-const towColumnsActive = ref(loadLocalStorageStore.editorSettingConfig)
+const towColumnsActive = ref(true)
 
 const selectCompLibClassify = (item: any) => {
   currentCompLibClassify.value = item
@@ -106,6 +106,7 @@ const initActiveState = (currItem: any) => {
   }
 }
 
+
 const selectComp = (item: any) => {
   initActiveState(item)
   emits('selectType', item.type)
@@ -114,7 +115,6 @@ const selectComp = (item: any) => {
 const initData = () => {
   const data = CompLibClassifyList?.value[0]
   const subItem = data?.children?.[0]
-  console.log('SubClassify', SubClassify.value)
   if (subItem) {
     SubClassify.value = subItem
   }
@@ -130,6 +130,7 @@ const selCompList = () => {
 watch(SubClassify, value => {
   selCompList()
 })
+
 
 onMounted(() => {
   eChartsCompList.value = [...CompList]

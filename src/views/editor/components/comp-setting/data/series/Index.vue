@@ -24,7 +24,7 @@ interface Props {
 }
 
 const state = ref({
-  title: '标题',
+  title: '数据配置',
   showState: true
 })
 

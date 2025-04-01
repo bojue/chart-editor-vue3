@@ -26,6 +26,11 @@ export const useLocalStorageStore = defineStore('localStorage', () => {
     window.localStorage.setItem('editorSettingConfig', JSON.stringify(val))
   }
 
+  function isInitStateBool()  {
+    const data = window.localStorage.getItem('editorSettingConfig')
+    return data !== null
+  }
+
 
   function compTowColumnsActive(bool: boolean) {
     editorSetting.value.compTowColumns = bool
@@ -35,6 +40,7 @@ export const useLocalStorageStore = defineStore('localStorage', () => {
   return {
     editorSetting,
     editorSettingConfig,
-    compTowColumnsActive
+    compTowColumnsActive,
+    isInitStateBool
   }
 })

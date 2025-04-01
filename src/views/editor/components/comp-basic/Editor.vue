@@ -1,6 +1,6 @@
 <template>
   <div class="setting-item">
-    <div class="tit">{{ title }}</div>
+    <div class="tit" :key="title">{{ title }}</div>
     <div class="val">
       <div class="data-str cursor" :title="JSON.stringify(props.dataObject[props.params], null, 2)">
         {{ props.dataObject[props.params] }}
@@ -75,7 +75,7 @@ const changeCodeData = (event) => {
   display: -webkit-box;
   /* 将元素设置为弹性盒子 */
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 5;
+  -webkit-line-clamp: 8;
   overflow: hidden;
   /* 超出部分隐藏 */
   text-overflow: ellipsis;

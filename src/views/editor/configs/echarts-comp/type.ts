@@ -18,4 +18,6 @@ type EchartsCompType =
   'parallel' |
   'themeRiver' |
   'custom' |
-  'heatmap';
+  'heatmap' |
+  'barLine' |
+  'datasetSeriesLayoutBy'

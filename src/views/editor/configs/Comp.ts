@@ -29,8 +29,14 @@ export const ChartDemoImgList = {
   TreeCircularImg: 'src/assets/echart-imgs/tree-circular.png',
   SankeyImg: 'src/assets/echart-imgs/scnkey.png',
   TreeImg: 'src/assets/echart-imgs/tree.png',
+  TreeRadialImg: 'src/assets/echart-imgs/tree-radial.webp',
+  ThemeRiverBasicImg: 'src/assets/echart-imgs/themeRiver-basic.webp',
   TreeMapImg: 'src/assets/echart-imgs/treemap.png',
+  DatasetSeriesLayoutByImg: 'src/assets/echart-imgs/dataset-series-layout-by.webp',
+  MixLineBar: 'src/assets/echart-imgs/mix-line-bar.webp',
 
+  // 复杂
+  TreeMapSimpleImg: 'src/assets/echart-imgs/treemap-simple.webp',
 }
 
 export const ChartCompList = [{
@@ -165,22 +171,42 @@ export const ChartCompList = [{
   icon: ChartDemoImgList.SankeyImg,
   classify: [CompClassifyType.AllChart, CompClassifyType.ChartMore]
 },
-  // {
-  //   label: '树图',
-  //   type: CompType.Tree,
-  //   icon: ChartDemoImgList.TreeImg,
-  //   classify: [CompClassifyType.AllChart, CompClassifyType.BarChart]
-  // }, {
-  //   label: '树图·环形',
-  //   type: CompType.TreeCircular,
-  //   icon: ChartDemoImgList.TreeCircularImg,
-  //   classify: [CompClassifyType.AllChart, CompClassifyType.BarChart]
-  // }, {
-  //   label: '树图·矩阵',
-  //   type: CompType.TreeMap,
-  //   icon: ChartDemoImgList.TreeMapImg,
-  //   classify: [CompClassifyType.AllChart, CompClassifyType.BarChart]
-  // },
+{
+  label: '树图',
+  type: CompType.Tree,
+  icon: ChartDemoImgList.TreeImg,
+  classify: [CompClassifyType.AllChart, CompClassifyType.TreeChart]
+},
+{
+  label: '树图·环形',
+  type: CompType.TreeRadial,
+  icon: ChartDemoImgList.TreeRadialImg,
+  classify: [CompClassifyType.AllChart, CompClassifyType.TreeChart]
+},
+{
+  label: '主题河流图',
+  type: CompType.ThemeRiver,
+  icon: ChartDemoImgList.ThemeRiverBasicImg,
+  classify: [CompClassifyType.AllChart, CompClassifyType.ThemeRiverChart]
+},
+{
+  label: '折柱混合',
+  type: CompType.BarLine,
+  icon: ChartDemoImgList.MixLineBar,
+  classify: [CompClassifyType.MixedAllChart, CompClassifyType.MixedBarLineChart]
+},
+{
+  label: '按列按行和按列排布',
+  type: CompType.DatasetSeriesLayoutBy,
+  icon: ChartDemoImgList.DatasetSeriesLayoutByImg,
+  classify: [CompClassifyType.MixedAllChart, CompClassifyType.MixedMoreChart]
+},
+{
+  label: '树矩阵·基础',
+  type: CompType.TreeMapBasic,
+  icon: ChartDemoImgList.TreeMapSimpleImg,
+  classify: [CompClassifyType.ComplexAllChart]
+},
 ]
 
 export const CompList: any[] = [...ChartCompList]

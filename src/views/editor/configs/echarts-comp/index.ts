@@ -18,6 +18,12 @@ import { option as SankeyOption } from './basic/Sankey';
 import { option as GaugeOption } from './basic/Gauge';
 import { option as GaugeRingOption } from './basic/GaugeRing';
 import { option as GaugeMultiTitleOption } from './basic/GaugeMultiTitle';
+import { option as TreeOption } from './basic/Tree';
+import { option as TreeRadialOption } from './basic/TreeRadial';
+import { option as ThemeRiverBasicOption } from './basic/ThemeRiverBasic';
+import { option as BarLineOption } from './combined/BarLine';
+import { option as DatasetSeriesLayoutBy } from './combined/DatasetSeriesLayoutBy';
+import { option as TreeMapBasicOption } from './complex/TreeMapBasic';
 
 export default {
   LineOption,
@@ -39,6 +45,11 @@ export default {
   SankeyOption,
   GaugeOption,
   GaugeRingOption,
-  GaugeMultiTitleOption
-
+  GaugeMultiTitleOption,
+  TreeOption,
+  TreeRadialOption,
+  ThemeRiverBasicOption,
+  BarLineOption,
+  DatasetSeriesLayoutBy,
+  TreeMapBasicOption
 }

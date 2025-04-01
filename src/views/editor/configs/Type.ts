@@ -1,22 +1,33 @@
 export enum ClassifyType {
-  BasicChart = 'basicChart',
-  Combination = 'combination',
+  BasicChart = 'basicChart', // 基础
+  Mixed = 'mixed', // 组合
   Complex = 'complex',
   Other = 'other',
 }
 
 // 定义组件分类
 export enum CompClassifyType {
+  // 基础
   AllChart = 'allChart',
   BarChart = 'barChart',
+  ThemeRiverChart = 'themeRiverChart',
   LineChart = 'lineChart',
   PieChart = 'pieChart',
   ScatterPlotChart = 'scatterPlot',
   ScatterChart = 'scatterChart',
   MapChart = 'mapChart',
   RadarChart = 'radarChart',
+  TreeChart = 'treeChart',
   DashBoard = 'dashBoard',
   ChartMore = 'chartMore',
+
+  // 组合
+  MixedAllChart = 'mixedChart',
+  MixedBarLineChart = 'mixedBarLineChart',
+  MixedMoreChart = 'mixedMoreChart',
+
+  // 复杂
+  ComplexAllChart = 'complexAllChart'
 }
 
 export enum CompType {
@@ -43,8 +54,15 @@ export enum CompType {
   GaugeMulti = 'gaugeMulti', // 仪表盘多等级盘
   GaugeRing = 'gaugeRing', // 仪表盘-环
   Tree = 'tree', // 树图
+  TreeRadial = 'treeRadial',
   TreeCircular = 'treeCircular', // 树图-环形
   Sankey = 'sankey', // 桑基图
+  ThemeRiver = 'themeRiver', // 双柱状图
+  BarLine = 'barLine', // 柱状图+折线
+  DatasetSeriesLayoutBy = 'datasetSeriesLayoutBy', // 双柱状图
+
+  // 复杂
+  TreeMapBasic = 'treeMapBasic', // 矩阵树图
   TreeMap = 'treeMap', // 矩阵树图
 }
 
