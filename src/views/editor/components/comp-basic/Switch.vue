@@ -18,4 +18,10 @@ const props = defineProps<Props>();
 
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.setting-item {
+  .val {
+    line-height: 30px;
+  }
+}
+</style>

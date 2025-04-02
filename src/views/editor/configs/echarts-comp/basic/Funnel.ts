@@ -6,13 +6,6 @@ export const option = {
     trigger: 'item',
     formatter: '{a} <br/>{b} : {c}%'
   },
-  toolbox: {
-    feature: {
-      dataView: { readOnly: false },
-      restore: {},
-      saveAsImage: {}
-    }
-  },
   legend: {
     data: ['Show', 'Click', 'Visit', 'Inquiry', 'Order']
   },

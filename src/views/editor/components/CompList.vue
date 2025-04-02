@@ -84,7 +84,6 @@ const selectCompLibClassify = (item: any) => {
 
 const selectSubClassify = (subItem: any) => {
   SubClassify.value = subItem
-  console.log('SubClassify', SubClassify.value)
 }
 
 const changeActiveState = () => {

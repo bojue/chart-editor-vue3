@@ -2,7 +2,7 @@
   <div class="editor-header border-bottom">
     <div class="nav">
       <div class="title">
-        可视化大屏
+        图表编辑器
       </div>
     </div>
   </div>
@@ -14,5 +14,10 @@
 .editor-header {
   height: 57px;
   line-height: 56px;
+
+  .title {
+    padding: 0 20px;
+    font-size: 218x;
+  }
 }
 </style>

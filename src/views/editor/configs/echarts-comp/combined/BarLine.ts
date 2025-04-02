@@ -10,14 +10,15 @@ export const option = {
       }
     }
   },
-  toolbox: {
-    feature: {
-      dataView: { show: true, readOnly: false },
-      magicType: { show: true, type: ['line', 'bar'] },
-      restore: { show: true },
-      saveAsImage: { show: true }
-    }
-  },
+  // toolbox: {
+  //   show: true,  // 必须设置为 true
+  //   feature: {
+  //     dataView: { show: true, readOnly: false },
+  //     magicType: { show: true, type: ['line', 'bar'] },
+  //     restore: { show: true },
+  //     saveAsImage: { show: true }
+  //   }
+  // },
   legend: {
     data: ['Evaporation', 'Precipitation', 'Temperature']
   },

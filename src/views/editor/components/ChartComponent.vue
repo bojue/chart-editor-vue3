@@ -163,9 +163,13 @@ const initChart = () => {
     // 显示标题
     const isTitleBool = props?.options?._title?.show
     props.options.title = isTitleBool && props.options._title
+    // 工具栏
+    const isToolboxShow = props?.options?._toolbox?.show;
+    props.options.toolbox = isToolboxShow && props.options._toolbox;
     // 开启水印
     const isGraphicBool = props?.options?._graphic?.show;
     props.options.graphic = isGraphicBool && props.options._graphic;
+
 
     chartInstance.setOption(props.options, true);
   }

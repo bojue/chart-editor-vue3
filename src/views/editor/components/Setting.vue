@@ -9,6 +9,7 @@
     <div class="setting-contents" v-if="options">
       <FoundationComponent :options="options" v-if="selectBtn.type === 'foundation'" />
       <DataComponent :options="options" v-if="selectBtn.type === 'data'" />
+      <ToolboxComponent :options="options" v-if="selectBtn.type === 'toolbox'" />
       <WatermarkComponent :graphic="options._graphic" v-if="selectBtn.type === 'watermark'" />
     </div>
   </div>
@@ -18,6 +19,7 @@ import { onMounted, ref } from 'vue'
 import { Radio } from 'ant-design-vue';
 import FoundationComponent from './comp-setting/foundation/Index.vue'
 import DataComponent from './comp-setting/data/Index.vue'
+import ToolboxComponent from './comp-setting/toolbox/Index.vue'
 import WatermarkComponent from './comp-setting/watermark/Index.vue'
 interface Props {
   options: any
@@ -36,6 +38,9 @@ const list = ref([{
 }, {
   label: '数据',
   type: 'data',
+}, {
+  label: '工具栏',
+  type: 'toolbox',
 }, {
   label: '水印',
   type: 'watermark',
@@ -61,7 +66,7 @@ const selectItem = (item: any) => {
     text-align: center;
     display: grid;
     width: calc(100% - 0px);
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     background: rgba(255, 255, 255, 0.1);
     border-radius: 4px;
 

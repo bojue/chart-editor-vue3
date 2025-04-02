@@ -1,4 +1,27 @@
-export const option = {
+<template>
+  <div class="editor-theme-preview">
+
+    <div class="editor-canvas" :style="{
+      background: themeList?.[10]?.theme?.backgroundColor
+    }">
+      <div class="editor-canvas-content">
+        <EChartComponent :options="option" v-if="option" />
+      </div>
+    </div>
+  </div>
+</template>
+<script lang="ts" setup>
+import { ref, onMounted, defineEmits, watch, computed } from 'vue';
+import { ThemeList } from '../configs/ThemeList';
+import EChartComponent from '@/views/editor/components/ChartComponent.vue'
+const themeList = ref<any[]>([])
+
+const emits = defineEmits(['selectType'])
+const currentTheme = ref(null)
+const defOption = ref()
+const defColor = ref([])
+const option = ref({
+  color: defColor,
   title: {
     text: 'Stacked Area Chart'
   },
@@ -89,4 +112,49 @@ export const option = {
       data: [820, 932, 901, 934, 1290, 1330, 1320]
     }
   ]
-};
+})
+
+const fetchColorJsonData = async (theme: string) => {
+  const url = `src/assets/theme-echart/${theme}.project.json`
+  const response = await fetch(url)
+  const data = await response.json()
+  return data
+}
+
+
+const initData = async () => {
+  const requireList = []
+  let len = ThemeList.length
+  for (let i = 0; i < len; i++) {
+    const data = fetchColorJsonData(ThemeList[i].label)
+    requireList.push(data)
+  }
+  const themes = await Promise.all(requireList)
+  console.log('themes', themes)
+  themeList.value = [...themes]
+  if (themes) {
+    const color = themes?.[11]?.theme?.color
+    console.log(color)
+    defColor.value = color;
+  }
+
+
+}
+
+watch(themeList, () => {
+
+})
+
+
+onMounted(() => {
+  initData()
+})
+
+
+</script>
+
+<style lang="scss" scoped>
+.editor-theme-preview {
+  color: #fff;
+}
+</style>

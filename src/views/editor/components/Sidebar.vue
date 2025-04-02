@@ -17,6 +17,7 @@ import { ref, h } from 'vue';
 import { Classify } from '../configs/SidebarClassify';
 
 const ClassifyList = ref(Classify)
+const emits = defineEmits(['selectClassify'])
 
 const handleActiveState = (item: any) => {
   ClassifyList.value.forEach((item: any) => {
@@ -27,6 +28,7 @@ const handleActiveState = (item: any) => {
   if (ClassifyList.value.every(item => !item.active)) {
     ClassifyList.value[1].active = true;
   }
+  emits('selectClassify', item.type)
 }
 </script>
 
