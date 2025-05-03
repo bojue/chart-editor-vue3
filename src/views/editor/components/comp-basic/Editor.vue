@@ -20,8 +20,8 @@
       </div>
     </div>
 
-    <EditorModel v-if="open" :value="props.dataObject[props.params]" :title="codeEditorTitle"
-      @submit="changeCodeData($event, code)" @cancel="cancel" />
+    <EditorModel v-if="open" :valueData="props.dataObject[props.params]" :title="codeEditorTitle"
+      @submit="changeCodeData($event)" @cancel="cancel" />
   </div>
 
 </template>
@@ -63,7 +63,7 @@ const cancel = () => {
   open.value = false
 }
 
-const changeCodeData = (event) => {
+const changeCodeData = (event: any) => {
   open.value = false
   props.dataObject[props.params] = event
 }

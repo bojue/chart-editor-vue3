@@ -13,13 +13,13 @@ import CodeFlask from 'codeflask';
 import { notification } from 'ant-design-vue';
 interface Props {
   title: string
-  value: string
+  valueData: string
 }
 
 const props = defineProps<Props>();
 const emits = defineEmits(['cancel', 'submit'])
 const open = ref(true)
-const flask = ref(null)
+const flask = ref()
 const codeEditorId = ref('code-editor')
 const bodyStyle = {
   minHeight: '500px',
@@ -32,15 +32,15 @@ const initCode = () => {
     flask.value = new CodeFlask('#' + codeEditorId.value, {
       language: 'json',
       lineNumbers: true,
-      defaultCode: JSON.stringify(props.value, null, 2)
+      defaultCode: JSON.stringify(props.valueData, null, 2)
     });
 
     // This will also trigger .onUpdate()
-    flask.value.updateCode(JSON.stringify(props.value, null, 2));
+    flask.value.updateCode(JSON.stringify(props.valueData, null, 2));
   }
 }
 
-watch(props.value, value => {
+watch(props, value => {
   initCode()
 })
 
@@ -57,7 +57,7 @@ const handleOk = () => {
       const data = flask.value.getCode()
       const str = JSON.parse(data)
       emits('submit', str)
-    } catch (e) {
+    } catch (e: any) {
       if (e instanceof SyntaxError) {
         notification.error({
           message: '解析错误，请检查数据是否是正常的json对象:\n\n',

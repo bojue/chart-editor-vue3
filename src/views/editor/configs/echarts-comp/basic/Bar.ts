@@ -35,7 +35,7 @@ app.configParameters = {
     }
   },
   position: {
-    options: posList.reduce(function (map, pos) {
+    options: posList.reduce(function (map: any, pos: string) {
       map[pos] = pos;
       return map;
     }, {})
@@ -59,6 +59,7 @@ app.config = {
       position: app.config.position,
       distance: app.config.distance
     };
+    let myChart: any
     myChart.setOption({
       series: [
         {

@@ -16,7 +16,7 @@ interface Props {
   dataObject: any
 }
 
-const changeAlign = (params: [align: 'top' | 'left', type: string]) => {
+const changeAlign = (params: any) => {
   const [align, type] = params;
   props.dataObject[align] = type;
 }

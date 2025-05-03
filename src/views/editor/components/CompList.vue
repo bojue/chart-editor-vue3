@@ -65,8 +65,8 @@ const emits = defineEmits(['selectType'])
 
 const loadLocalStorageStore = useLocalStorageStore()
 const CompLibClassifyList = ref(CompLibClassify) // 组件子分类
-const SubClassify = ref('') // 组件子分类
-const eChartsCompList = ref([]) // 组件列表
+const SubClassify = ref() // 组件子分类
+const eChartsCompList = ref() // 组件列表
 const compList = ref([...CompList]) // 组件列表
 const selectCompList = ref([...CompList])
 const currentCompLibClassify = ref(CompLibClassifyList.value[0])

@@ -58,7 +58,7 @@ export const option = {
       name: 'Evaporation',
       type: 'bar',
       tooltip: {
-        valueFormatter: function (value) {
+        valueFormatter: function (value: any) {
           return value + ' ml';
         }
       },
@@ -70,7 +70,7 @@ export const option = {
       name: 'Precipitation',
       type: 'bar',
       tooltip: {
-        valueFormatter: function (value) {
+        valueFormatter: function (value: any) {
           return value + ' ml';
         }
       },
@@ -83,7 +83,7 @@ export const option = {
       type: 'line',
       yAxisIndex: 1,
       tooltip: {
-        valueFormatter: function (value) {
+        valueFormatter: function (value: any) {
           return value + ' °C';
         }
       },
